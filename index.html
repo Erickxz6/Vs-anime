@@ -422,72 +422,133 @@
     }
   ];
 
-  // COMPILACIÓN COMPLETA AUTOMATIZADA DE LOS OTROS 90 ANIMES FAMOSOS CON PERSONAJES OFICIALES
-  const nombresAnimesFamosos = [
-    "My Hero Academia", "Demon Slayer", "Chainsaw Man", "Tokyo Ghoul", "Fairy Tail", 
-    "Code Geass", "Steins;Gate", "Neon Genesis Evangelion", "Black Clover", "Mob Psycho 100", 
-    "Haikyuu!!", "JoJo's Bizarre Adventure", "Gintama", "Vinland Saga", "Fate/Zero", 
-    "No Game No Life", "Dr. Stone", "Fire Force", "The Seven Deadly Sins", "Tokyo Revengers", 
-    "Soul Eater", "Blue Exorcist", "Noragami", "Akame ga Kill!", "Kill la Kill", 
-    "Gurren Lagann", "Overlord", "Re:Zero", "Slime Isekai", "Shield Hero", 
-    "Goblin Slayer", "Mushoku Tensei", "Dororo", "Parasyte", "Psycho-Pass", 
-    "Cowboy Bebop", "Samurai Champloo", "Rurouni Kenshin", "Yu Yu Hakusho", "Slam Dunk", 
-    "Kuroko no Basket", "Hajime no Ippo", "Saint Seiya", "Sailor Moon", "InuYasha", 
-    "Ranma 1/2", "Yu-Gi-Oh!", "Digimon Adventure", "Pokémon", "Captain Tsubasa", 
-    "Boruto", "Initial D", "Wangan Midnight", "Great Teacher Onizuka", "Monster", 
-    "Death Parade", "Erased", "Your Lie in April", "Clannad", "Anohana", 
-    "Violet Evergarden", "Kaguya-sama", "Toradora!", "Maid Sama!", "Fruits Basket", 
-    "Horimiya", "Blue Lock", "Ao Ashi", "Inazuma Eleven", "Yowamushi Pedal", 
-    "Eyeshield 21", "Free!", "Diamond no Ace", "Hell's Paradise", "Solo Leveling", 
-    "Mashle", "Undead Unluck", "Shangri-La Frontier", "Baki", "Kengan Ashura", 
-    "Record of Ragnarok", "Sakamoto Days", "Kaiju No. 8", "Cyberpunk Edgerunners", "Spy x Family",
-    "Jojo Stardust Crusaders", "Assassination Classroom", "Elfen Lied", "Claymore", "D.Gray-man"
+  // COMPILACIÓN COMPLETA DE LOS OTROS 90 ANIMES FAMOSOS CON 10 PERSONAJES POR SERIE
+  const rolesPorIndice = ["Protagonista", "Aliado", "Rival", "Antagonista", "Mentor", "Líder", "Combatiente", "Soporte", "Leyenda", "Anti-Héroe"];
+  const tecnicasPorIndice = [
+    "Técnica Insignia Desatada",
+    "Combo de Alta Velocidad",
+    "Contraataque Estratégico",
+    "Dominio Final de Batalla",
+    "Defensa de Voluntad Absoluta",
+    "Impacto de Energía Concentrada",
+    "Asalto Cuerpo a Cuerpo Avanzado",
+    "Táctica de Soporte Precisa",
+    "Poder Legendario Liberado",
+    "Modo Despertar Extremo"
   ];
 
-  const elencosPersonajes = [
-    ["All Might", "Izuku Midoriya", "Bakugo Katsuki", "Todoroki Shoto", "Shigaraki Tomura", "All For One", "Endeavor", "Dabi", "Mirio Togata", "Hawks"],
-    ["Yoriichi Tsugikuni", "Muzan Kibutsuji", "Tanjiro Kamado", "Nezuko Kamado", "Zenitsu Agatsuma", "Inosuke Hashibira", "Rengoku Kyojuro", "Tomioka Giyu", "Kokushibo", "Akaza"],
-    ["Denji", "Makima", "Aki Hayakawa", "Power", "Reze", "Chainsaw Devil", "Arai", "Kishibe", "Himeno", "Kobeni"],
-    ["Kaneki Ken", "Touka Kirishima", "Rize Kamishiro", "Shuu Tsukiyama", "Yoshimura", "Amon Koutaro", "Suzuya Juuzou", "Arima Kisho", "Ayato", "Eto Yoshimura"],
-    ["Natsu Dragneel", "Lucy Heartfilia", "Erza Scarlet", "Gray Fullbuster", "Happy", "Zeref Dragneel", "Acnologia", "Gajeel Redfox", "Jellal Fernandes", "Laxus Dreyar"],
-    ["Lelouch vi Britannia", "Suzaku Kururugi", "C.C.", "Kallen Stadtfeld", "Nunnally", "Shirley", "Charles zi Britannia", "Schneizel", "Rolo", "Orange Jeremiah"],
-    ["Okabe Rintarou", "Makise Kurisu", "Mayuri Shiina", "Hashida Itaru", "Amane Suzuha", "Kiryuu Moeka", "Urushibara Ruka", "Feiris Nyannyan", "Mr. Braun", "Doctor Nakabachi"],
-    ["Shinji Ikari", "Rei Ayanami", "Asuka Langley", "Misato Katsuragi", "Gendo Ikari", "Kaworu Nagisa", "Ritsuko Akagi", "Kaji Ryoji", "Toji Suzuhara", "Mari Makinami"],
-    ["Asta", "Yuno", "Yami Sukehiro", "Noelle Silva", "Julius Novachrono", "Lumiere Silvamillion", "Licht", "Lucius Zogratis", "Mereoleona Vermillion", "Nacht Faust"],
-    ["Shigeo Kageyama (Mob)", "Reigen Arataka", "Dimple", "Ritsu Kageyama", "Teruki Hanazawa", "Toichiro Suzuki", "Serizawa", "Shou Suzuki", "Ron", "Tsubomi"]
-  ];
-
-  const tecnicasGenericas = ["Ráfaga Mística Completa", "Filo Sónico Elemento", "Barrera Infranqueable", "Destrucción Atómica Corpórea", "Paso de Sombras Dimensional", "Impacto de Energía Magna"];
-
-  // Bucle estructural para autocompletar la base relacional de datos reales hasta los 100 animes
-  for (let i = 0; i < 90; i++) {
-    const animeTitle = nombresAnimesFamosos[i % nombresAnimesFamosos.length];
-    const personajesFamososBase = elencosPersonajes[i % elencosPersonajes.length];
-    
-    const charsList = [];
-    for (let j = 0; j < 10; j++) {
-      const pName = personajesFamososBase[j] + (Math.floor(i/10) > 0 ? ` II` : ``);
-      const atkVal = 70 + ((i + j) % 31);
-      const defVal = 70 + ((i * j) % 31);
-      const durVal = 70 + ((i + j * 2) % 31);
-      
-      charsList.push({
-        name: pName,
-        technique: tecnicasGenericas[(i + j) % tecnicasGenericas.length] + ` Fase ` + (j+1),
-        role: j === 0 ? "Protagonista" : (j === 3 ? "Antagonista" : (j === 2 ? "Mentor" : "Combatiente")),
-        atk: atkVal,
-        def: defVal,
-        dur: durVal
-      });
-    }
-
-    animeDatabase.push({
-      title: animeTitle + ` (Arco ${Math.floor(i/nombresAnimesFamosos.length) + 1})`,
-      author: "Mangaka Oficial Industrial",
-      studio: "Estudio Multimedios Encargado",
-      chars: charsList
-    });
+  function crearPersonajesAnime(nombres, seed) {
+    return nombres.map((name, idx) => ({
+      name,
+      technique: `${tecnicasPorIndice[idx]} - ${name}`,
+      role: rolesPorIndice[idx],
+      atk: Math.min(100, 72 + ((seed * 5 + idx * 7) % 29)),
+      def: Math.min(100, 70 + ((seed * 3 + idx * 6) % 30)),
+      dur: Math.min(100, 73 + ((seed * 4 + idx * 5) % 28))
+    }));
   }
+
+  const animeEntriesFamosos = [
+    { title: "My Hero Academia", author: "Kohei Horikoshi", studio: "Bones", chars: ["Izuku Midoriya", "Katsuki Bakugo", "Shoto Todoroki", "Tomura Shigaraki", "All Might", "Endeavor", "Dabi", "Ochaco Uraraka", "All For One", "Hawks"] },
+    { title: "Demon Slayer", author: "Koyoharu Gotouge", studio: "ufotable", chars: ["Tanjiro Kamado", "Nezuko Kamado", "Zenitsu Agatsuma", "Muzan Kibutsuji", "Giyu Tomioka", "Kyojuro Rengoku", "Inosuke Hashibira", "Shinobu Kocho", "Yoriichi Tsugikuni", "Akaza"] },
+    { title: "Chainsaw Man", author: "Tatsuki Fujimoto", studio: "MAPPA", chars: ["Denji", "Power", "Aki Hayakawa", "Makima", "Kishibe", "Reze", "Himeno", "Kobeni Higashiyama", "Pochita", "Quanxi"] },
+    { title: "Tokyo Ghoul", author: "Sui Ishida", studio: "Studio Pierrot", chars: ["Ken Kaneki", "Touka Kirishima", "Shuu Tsukiyama", "Kishou Arima", "Yoshimura", "Juuzou Suzuya", "Koutarou Amon", "Rize Kamishiro", "Eto Yoshimura", "Ayato Kirishima"] },
+    { title: "Fairy Tail", author: "Hiro Mashima", studio: "A-1 Pictures", chars: ["Natsu Dragneel", "Lucy Heartfilia", "Gray Fullbuster", "Zeref Dragneel", "Erza Scarlet", "Laxus Dreyar", "Gajeel Redfox", "Wendy Marvell", "Acnologia", "Jellal Fernandes"] },
+    { title: "Code Geass", author: "Ichiro Okouchi", studio: "Sunrise", chars: ["Lelouch vi Britannia", "Suzaku Kururugi", "Kallen Stadtfeld", "Charles zi Britannia", "C.C.", "Schneizel el Britannia", "Jeremiah Gottwald", "Nunnally vi Britannia", "Marianne vi Britannia", "Rolo Lamperouge"] },
+    { title: "Steins;Gate", author: "5pb. / Nitroplus", studio: "White Fox", chars: ["Rintaro Okabe", "Kurisu Makise", "Mayuri Shiina", "SERN", "Itaru Hashida", "Suzuha Amane", "Moeka Kiryu", "Luka Urushibara", "Mr. Braun", "Faris NyanNyan"] },
+    { title: "Neon Genesis Evangelion", author: "Hideaki Anno", studio: "Gainax", chars: ["Shinji Ikari", "Rei Ayanami", "Asuka Langley Soryu", "Gendo Ikari", "Misato Katsuragi", "Kaworu Nagisa", "Mari Makinami", "Ritsuko Akagi", "Unit-01", "Toji Suzuhara"] },
+    { title: "Black Clover", author: "Yuki Tabata", studio: "Studio Pierrot", chars: ["Asta", "Yuno", "Noelle Silva", "Lucius Zogratis", "Yami Sukehiro", "Julius Novachrono", "Mereoleona Vermillion", "Nacht Faust", "Lumiere Silvamillion", "Licht"] },
+    { title: "Mob Psycho 100", author: "ONE", studio: "Bones", chars: ["Shigeo Kageyama", "Arataka Reigen", "Ritsu Kageyama", "Toichiro Suzuki", "Dimple", "Teruki Hanazawa", "Serizawa Katsuya", "Shou Suzuki", "Tsubomi Takane", "Koyama Megumu"] },
+    { title: "Haikyuu!!", author: "Haruichi Furudate", studio: "Production I.G", chars: ["Shoyo Hinata", "Tobio Kageyama", "Kei Tsukishima", "Toru Oikawa", "Daichi Sawamura", "Wakatoshi Ushijima", "Yu Nishinoya", "Koshi Sugawara", "Kiyoomi Sakusa", "Tetsuro Kuroo"] },
+    { title: "JoJo's Bizarre Adventure", author: "Hirohiko Araki", studio: "David Production", chars: ["Jonathan Joestar", "Joseph Joestar", "Jotaro Kujo", "Dio Brando", "Josuke Higashikata", "Giorno Giovanna", "Jolyne Cujoh", "Bruno Bucciarati", "Kars", "Diavolo"] },
+    { title: "Gintama", author: "Hideaki Sorachi", studio: "Sunrise", chars: ["Gintoki Sakata", "Shinpachi Shimura", "Kagura", "Utsuro", "Toshiro Hijikata", "Kotaro Katsura", "Sogo Okita", "Tae Shimura", "Takasugi Shinsuke", "Kamui"] },
+    { title: "Vinland Saga", author: "Makoto Yukimura", studio: "WIT Studio", chars: ["Thorfinn", "Askeladd", "Thorkell", "Canute", "Thors", "Bjorn", "Einar", "Gudrid", "Floki", "Snake"] },
+    { title: "Fate/Zero", author: "Gen Urobuchi", studio: "ufotable", chars: ["Kiritsugu Emiya", "Saber", "Rider", "Kirei Kotomine", "Irisviel von Einzbern", "Lancer", "Archer Gilgamesh", "Waver Velvet", "Berserker", "Caster"] },
+    { title: "No Game No Life", author: "Yuu Kamiya", studio: "Madhouse", chars: ["Sora", "Shiro", "Stephanie Dola", "Tet", "Jibril", "Chlammy Zell", "Fiel Nirvalen", "Izuna Hatsuse", "Kurami Zell", "Miko"] },
+    { title: "Dr. Stone", author: "Riichiro Inagaki", studio: "TMS Entertainment", chars: ["Senku Ishigami", "Taiju Oki", "Yuzuriha Ogawa", "Tsukasa Shishio", "Chrome", "Kohaku", "Gen Asagiri", "Suika", "Byakuya Ishigami", "Ryusui Nanami"] },
+    { title: "Fire Force", author: "Atsushi Ohkubo", studio: "David Production", chars: ["Shinra Kusakabe", "Arthur Boyle", "Maki Oze", "Sho Kusakabe", "Akitaru Obi", "Benimaru Shinmon", "Tamaki Kotatsu", "Iris", "Haumea", "Leonard Burns"] },
+    { title: "The Seven Deadly Sins", author: "Nakaba Suzuki", studio: "A-1 Pictures", chars: ["Meliodas", "Elizabeth Liones", "Ban", "Zeldris", "Diane", "Escanor", "King", "Gowther", "Demon King", "Merlin"] },
+    { title: "Tokyo Revengers", author: "Ken Wakui", studio: "Liden Films", chars: ["Takemichi Hanagaki", "Manjiro Sano", "Ken Ryuguji", "Tetta Kisaki", "Chifuyu Matsuno", "Keisuke Baji", "Takashi Mitsuya", "Hinata Tachibana", "Izana Kurokawa", "Shuji Hanma"] },
+    { title: "Soul Eater", author: "Atsushi Ohkubo", studio: "Bones", chars: ["Maka Albarn", "Soul Evans", "Black Star", "Asura", "Death the Kid", "Lord Death", "Tsubaki Nakatsukasa", "Blair", "Arachne Gorgon", "Crona"] },
+    { title: "Blue Exorcist", author: "Kazue Kato", studio: "A-1 Pictures", chars: ["Rin Okumura", "Yukio Okumura", "Shiemi Moriyama", "Satan", "Mephisto Pheles", "Shura Kirigakure", "Ryuji Suguro", "Izumo Kamiki", "Arthur Auguste Angel", "Amaimon"] },
+    { title: "Noragami", author: "Adachitoka", studio: "Bones", chars: ["Yato", "Hiyori Iki", "Yukine", "Bishamon", "Kazuma", "Kofuku", "Daikoku", "Nora", "Father", "Ebisu"] },
+    { title: "Akame ga Kill!", author: "Takahiro", studio: "White Fox", chars: ["Akame", "Tatsumi", "Leone", "Esdeath", "Mine", "Bulat", "Chelsea", "Lubbock", "Najenda", "Wave"] },
+    { title: "Kill la Kill", author: "Kazuki Nakashima", studio: "Trigger", chars: ["Ryuko Matoi", "Mako Mankanshoku", "Satsuki Kiryuin", "Ragyo Kiryuin", "Senketsu", "Ira Gamagoori", "Nonon Jakuzure", "Uzu Sanageyama", "Nui Harime", "Aikuro Mikisugi"] },
+    { title: "Gurren Lagann", author: "Kazuki Nakashima", studio: "Gainax", chars: ["Simon", "Kamina", "Yoko Littner", "Lordgenome", "Nia Teppelin", "Viral", "Kittan Bachika", "Rossiu Adai", "Anti-Spiral", "Boota"] },
+    { title: "Overlord", author: "Kugane Maruyama", studio: "Madhouse", chars: ["Ainz Ooal Gown", "Albedo", "Shalltear Bloodfallen", "Demiurge", "Cocytus", "Sebas Tian", "Aura Bella Fiora", "Mare Bello Fiore", "Pandora's Actor", "Gazef Stronoff"] },
+    { title: "Re:Zero", author: "Tappei Nagatsuki", studio: "White Fox", chars: ["Subaru Natsuki", "Emilia", "Rem", "Elsa Granhiert", "Ram", "Beatrice", "Roswaal L. Mathers", "Otto Suwen", "Reinhard van Astrea", "Satella"] },
+    { title: "Slime Isekai", author: "Fuse", studio: "8bit", chars: ["Rimuru Tempest", "Benimaru", "Shion", "Clayman", "Shuna", "Diablo", "Milim Nava", "Veldora Tempest", "Guy Crimson", "Hakuro"] },
+    { title: "Shield Hero", author: "Aneko Yusagi", studio: "Kinema Citrus", chars: ["Naofumi Iwatani", "Raphtalia", "Filo", "Kyo Ethnina", "Melty Q Melromarc", "Glass", "L'Arc Berg", "Therese Alexanderite", "Ost Horai", "Motoyasu Kitamura"] },
+    { title: "Goblin Slayer", author: "Kumo Kagyu", studio: "White Fox", chars: ["Goblin Slayer", "Priestess", "High Elf Archer", "Goblin Lord", "Dwarf Shaman", "Lizard Priest", "Cow Girl", "Guild Girl", "Hero", "Sword Maiden"] },
+    { title: "Mushoku Tensei", author: "Rifujin na Magonote", studio: "Studio Bind", chars: ["Rudeus Greyrat", "Eris Boreas Greyrat", "Roxy Migurdia", "Orsted", "Ruijerd Superdia", "Sylphiette", "Paul Greyrat", "Ghislaine Dedoldia", "Laplace", "Hitogami"] },
+    { title: "Dororo", author: "Osamu Tezuka", studio: "MAPPA", chars: ["Hyakkimaru", "Dororo", "Tahomaru", "Daigo Kagemitsu", "Mio", "Jukai", "Biwamaru", "Nui no Kata", "Itachi", "Mutsu"] },
+    { title: "Parasyte", author: "Hitoshi Iwaaki", studio: "Madhouse", chars: ["Shinichi Izumi", "Migi", "Kana Kimishima", "Gotou", "Satomi Murano", "Ryoko Tamiya", "Uragami", "Hideo Shimada", "Takeshi Hirokawa", "Mamoru Uda"] },
+    { title: "Psycho-Pass", author: "Gen Urobuchi", studio: "Production I.G", chars: ["Akane Tsunemori", "Shinya Kogami", "Nobuchika Ginoza", "Shogo Makishima", "Tomomi Masaoka", "Yayoi Kunizuka", "Shusei Kagari", "Mika Shimotsuki", "Sibyl System", "Sakuya Togane"] },
+    { title: "Cowboy Bebop", author: "Hajime Yatate", studio: "Sunrise", chars: ["Spike Spiegel", "Jet Black", "Faye Valentine", "Vicious", "Edward Wong", "Ein", "Julia", "Gren", "Pierrot Le Fou", "Andy von de Oniyate"] },
+    { title: "Samurai Champloo", author: "Manglobe", studio: "Manglobe", chars: ["Mugen", "Jin", "Fuu Kasumi", "Kariya Kagetoki", "Sara", "Okinu", "Umanosuke", "Shoryu", "Mukuro", "Okuru"] },
+    { title: "Rurouni Kenshin", author: "Nobuhiro Watsuki", studio: "Studio Gallop", chars: ["Kenshin Himura", "Kaoru Kamiya", "Sanosuke Sagara", "Makoto Shishio", "Yahiko Myojin", "Aoshi Shinomori", "Saito Hajime", "Misao Makimachi", "Seijuro Hiko", "Enishi Yukishiro"] },
+    { title: "Yu Yu Hakusho", author: "Yoshihiro Togashi", studio: "Studio Pierrot", chars: ["Yusuke Urameshi", "Kazuma Kuwabara", "Kurama", "Toguro Younger", "Hiei", "Genkai", "Koenma", "Botan", "Raizen", "Sensui Shinobu"] },
+    { title: "Slam Dunk", author: "Takehiko Inoue", studio: "Toei Animation", chars: ["Hanamichi Sakuragi", "Kaede Rukawa", "Takenori Akagi", "Hisashi Mitsui", "Ryota Miyagi", "Haruko Akagi", "Akira Sendoh", "Shinichi Maki", "Eiji Sawakita", "Kicchou Fukuda"] },
+    { title: "Kuroko no Basket", author: "Tadatoshi Fujimaki", studio: "Production I.G", chars: ["Tetsuya Kuroko", "Taiga Kagami", "Ryota Kise", "Daiki Aomine", "Shintaro Midorima", "Atsushi Murasakibara", "Seijuro Akashi", "Teppei Kiyoshi", "Junpei Hyuga", "Riko Aida"] },
+    { title: "Hajime no Ippo", author: "George Morikawa", studio: "Madhouse", chars: ["Ippo Makunouchi", "Mamoru Takamura", "Ichiro Miyata", "Ricardo Martinez", "Takeshi Sendo", "Ryo Mashiba", "Tatsuya Kimura", "Masaru Aoki", "Genji Kamogawa", "Eiji Date"] },
+    { title: "Saint Seiya", author: "Masami Kurumada", studio: "Toei Animation", chars: ["Seiya", "Shiryu", "Hyoga", "Saga Gemini", "Shun", "Ikki", "Saori Kido", "Aiolia Leo", "Shaka Virgo", "Hades"] },
+    { title: "Sailor Moon", author: "Naoko Takeuchi", studio: "Toei Animation", chars: ["Usagi Tsukino", "Ami Mizuno", "Rei Hino", "Queen Beryl", "Makoto Kino", "Minako Aino", "Mamoru Chiba", "Chibiusa", "Sailor Saturn", "Sailor Galaxia"] },
+    { title: "InuYasha", author: "Rumiko Takahashi", studio: "Sunrise", chars: ["Inuyasha", "Kagome Higurashi", "Miroku", "Naraku", "Sango", "Sesshomaru", "Shippo", "Kikyo", "Toga", "Koga"] },
+    { title: "Ranma 1/2", author: "Rumiko Takahashi", studio: "Studio Deen", chars: ["Ranma Saotome", "Akane Tendo", "Ryoga Hibiki", "Tatewaki Kuno", "Shampoo", "Genma Saotome", "Ukyo Kuonji", "Kasumi Tendo", "Happosai", "Cologne"] },
+    { title: "Yu-Gi-Oh!", author: "Kazuki Takahashi", studio: "Gallop", chars: ["Yugi Muto", "Seto Kaiba", "Joey Wheeler", "Marik Ishtar", "Tea Gardner", "Mai Valentine", "Bakura Ryou", "Mokuba Kaiba", "Yami Yugi", "Maximillion Pegasus"] },
+    { title: "Digimon Adventure", author: "Akiyoshi Hongo", studio: "Toei Animation", chars: ["Tai Kamiya", "Matt Ishida", "Sora Takenouchi", "Devimon", "Izzy Izumi", "Mimi Tachikawa", "Joe Kido", "T.K. Takaishi", "WarGreymon", "Piedmon"] },
+    { title: "Pokémon", author: "Satoshi Tajiri", studio: "OLM", chars: ["Ash Ketchum", "Pikachu", "Misty", "Team Rocket", "Brock", "Charizard", "Greninja", "Dawn", "Mewtwo", "Cynthia"] },
+    { title: "Captain Tsubasa", author: "Yoichi Takahashi", studio: "Tsuchida Production", chars: ["Tsubasa Ozora", "Genzo Wakabayashi", "Kojiro Hyuga", "Karl Heinz Schneider", "Taro Misaki", "Ryo Ishizaki", "Jun Misugi", "Hikaru Matsuyama", "Natureza", "Roberto Hongo"] },
+    { title: "Boruto", author: "Ukyo Kodachi / Masashi Kishimoto", studio: "Studio Pierrot", chars: ["Boruto Uzumaki", "Sarada Uchiha", "Mitsuki", "Kawaki", "Naruto Uzumaki", "Sasuke Uchiha", "Shikadai Nara", "Sumire Kakei", "Momoshiki Otsutsuki", "Code"] },
+    { title: "Initial D", author: "Shuichi Shigeno", studio: "Studio Comet", chars: ["Takumi Fujiwara", "Keisuke Takahashi", "Ryosuke Takahashi", "Kyoichi Sudo", "Bunta Fujiwara", "Itsuki Takeuchi", "Natsuki Mogi", "Mako Sato", "Takeshi Nakazato", "Wataru Akiyama"] },
+    { title: "Wangan Midnight", author: "Michiharu Kusunoki", studio: "A.C.G.T", chars: ["Akio Asakura", "Tatsuya Shima", "Reina Akikawa", "Blackbird", "Koichi Hiramoto", "Masaki", "Eiji Kamiya", "Rikako Ota", "Jun Kitami", "Kou Tominaga"] },
+    { title: "Great Teacher Onizuka", author: "Tooru Fujisawa", studio: "Studio Pierrot", chars: ["Eikichi Onizuka", "Azusa Fuyutsuki", "Ryuji Danma", "Hiroshi Uchiyamada", "Noboru Yoshikawa", "Urumi Kanzaki", "Tomoko Nomura", "Miyabi Aizawa", "Kunio Murai", "Teshigawara"] },
+    { title: "Monster", author: "Naoki Urasawa", studio: "Madhouse", chars: ["Kenzo Tenma", "Nina Fortner", "Dieter", "Johan Liebert", "Heinrich Lunge", "Eva Heinemann", "Wolfgang Grimmer", "Roberto", "Franz Bonaparta", "Inspector Runge"] },
+    { title: "Death Parade", author: "Yuzuru Tachikawa", studio: "Madhouse", chars: ["Decim", "Chiyuki", "Nona", "Ginti", "Clavis", "Quin", "Oculus", "Mayu Arita", "Harada", "Tatsumi"] },
+    { title: "Erased", author: "Kei Sanbe", studio: "A-1 Pictures", chars: ["Satoru Fujinuma", "Kayo Hinazuki", "Airi Katagiri", "Gaku Yashiro", "Sachiko Fujinuma", "Kenya Kobayashi", "Hiromi Sugita", "Osamu", "Jun Shiratori", "Misato Yanagihara"] },
+    { title: "Your Lie in April", author: "Naoshi Arakawa", studio: "A-1 Pictures", chars: ["Kosei Arima", "Kaori Miyazono", "Tsubaki Sawabe", "Takeshi Aiza", "Ryota Watari", "Emi Igawa", "Nagi Aiza", "Saki Arima", "Hiroko Seto", "Nao Kashiwagi"] },
+    { title: "Clannad", author: "Key", studio: "Kyoto Animation", chars: ["Tomoya Okazaki", "Nagisa Furukawa", "Kyou Fujibayashi", "Youhei Sunohara", "Kotomi Ichinose", "Tomoyo Sakagami", "Fuko Ibuki", "Akio Furukawa", "Ushio Okazaki", "Sanae Furukawa"] },
+    { title: "Anohana", author: "Mari Okada", studio: "A-1 Pictures", chars: ["Jinta Yadomi", "Meiko Honma", "Naruko Anjo", "Atsumu Matsuyuki", "Tetsudo Hisakawa", "Chiriko Tsurumi", "Irene Honma", "Satoshi Honma", "Manabu Honma", "Atsushi Yadomi"] },
+    { title: "Violet Evergarden", author: "Kana Akatsuki", studio: "Kyoto Animation", chars: ["Violet Evergarden", "Gilbert Bougainvillea", "Claudia Hodgins", "Dietfried Bougainvillea", "Cattleya Baudelaire", "Benedict Blue", "Erica Brown", "Iris Cannary", "Oscar Webster", "Luculia Marlborough"] },
+    { title: "Kaguya-sama", author: "Aka Akasaka", studio: "A-1 Pictures", chars: ["Kaguya Shinomiya", "Miyuki Shirogane", "Chika Fujiwara", "Yu Ishigami", "Miko Iino", "Ai Hayasaka", "Kei Shirogane", "Nagisa Kashiwagi", "Tsubame Koyasu", "Maki Shijo"] },
+    { title: "Toradora!", author: "Yuyuko Takemiya", studio: "J.C.Staff", chars: ["Ryuuji Takasu", "Taiga Aisaka", "Minori Kushieda", "Ami Kawashima", "Yusaku Kitamura", "Yasuko Takasu", "Sumire Kanou", "Nanako Kashii", "Maya Kihara", "Koji Haruta"] },
+    { title: "Maid Sama!", author: "Hiro Fujiwara", studio: "J.C.Staff", chars: ["Misaki Ayuzawa", "Takumi Usui", "Hinata Shintani", "Tora Igarashi", "Sakura Hanazono", "Shizuko Kaga", "Soutarou Kanou", "Aoi Hyoudou", "Satsuki Hyoudou", "Yukimura Shoichiro"] },
+    { title: "Fruits Basket", author: "Natsuki Takaya", studio: "TMS Entertainment", chars: ["Tohru Honda", "Yuki Sohma", "Kyo Sohma", "Akito Sohma", "Shigure Sohma", "Hatori Sohma", "Momiji Sohma", "Hatsuharu Sohma", "Kyoko Honda", "Isuzu Sohma"] },
+    { title: "Horimiya", author: "HERO", studio: "CloverWorks", chars: ["Kyoko Hori", "Izumi Miyamura", "Toru Ishikawa", "Yuki Yoshikawa", "Kakeru Sengoku", "Remi Ayasaki", "Sakura Kono", "Shu Iura", "Akane Yanagi", "Honoka Sawada"] },
+    { title: "Blue Lock", author: "Muneyuki Kaneshiro", studio: "8bit", chars: ["Yoichi Isagi", "Meguru Bachira", "Rensuke Kunigami", "Rin Itoshi", "Seishiro Nagi", "Hyoma Chigiri", "Shoei Barou", "Reo Mikage", "Sae Itoshi", "Jinpachi Ego"] },
+    { title: "Ao Ashi", author: "Yugo Kobayashi", studio: "Production I.G", chars: ["Ashito Aoi", "Eisaku Ohtomo", "Soichiro Tachibana", "Tatsuya Fukuda", "Hana Ichijo", "Keiji Togashi", "Jun Machisu", "Kanpei Kuroda", "Ren Kitano", "Yuuma Motoki"] },
+    { title: "Inazuma Eleven", author: "Level-5", studio: "OLM", chars: ["Mamoru Endo", "Shuya Goenji", "Yuto Kido", "Ray Dark", "Kazemaru Ichirouta", "Fubuki Shirou", "Hiroto Kiyama", "Tachimukai Yuuki", "Rococo Urupa", "Afuro Terumi"] },
+    { title: "Yowamushi Pedal", author: "Wataru Watanabe", studio: "TMS Entertainment", chars: ["Sakamichi Onoda", "Shunsuke Imaizumi", "Shokichi Naruko", "Sangaku Manami", "Yasutomo Arakita", "Jin Tadokoro", "Yusuke Makishima", "Toudou Jinpachi", "Akira Midousuji", "Hayato Shinkai"] },
+    { title: "Eyeshield 21", author: "Riichiro Inagaki", studio: "Gallop", chars: ["Sena Kobayakawa", "Yoichi Hiruma", "Ryokan Kurita", "Agon Kongo", "Monta", "Taro Raimon", "Mamori Anezaki", "Shin Seijuro", "Panther", "Kid"] },
+    { title: "Free!", author: "Koji Oji", studio: "Kyoto Animation", chars: ["Haruka Nanase", "Makoto Tachibana", "Nagisa Hazuki", "Rin Matsuoka", "Rei Ryugazaki", "Sousuke Yamazaki", "Gou Matsuoka", "Aiichiro Nitori", "Momotaro Mikoshiba", "Ikuya Kirishima"] },
+    { title: "Diamond no Ace", author: "Yuji Terajima", studio: "Madhouse", chars: ["Eijun Sawamura", "Satoru Furuya", "Kazuya Miyuki", "Mei Narumiya", "Haruichi Kominato", "Tetsuya Yuki", "Chris Yuu Takigawa", "Kuramochi Yoichi", "Raichi Todoroki", "Masamune Hongou"] },
+    { title: "Hell's Paradise", author: "Yuji Kaku", studio: "MAPPA", chars: ["Gabimaru", "Sagiri Yamada Asaemon", "Yuzuriha", "Lord Tensen", "Chobe Aza", "Toma Yamada Asaemon", "Shion Yamada Asaemon", "Senta Yamada Asaemon", "Rien", "Zhu Jin"] },
+    { title: "Solo Leveling", author: "Chugong", studio: "A-1 Pictures", chars: ["Sung Jinwoo", "Cha Hae-In", "Yoo Jinho", "Ant King", "Baek Yoonho", "Choi Jong-In", "Go Gunhee", "Igris", "Ashborn", "Thomas Andre"] },
+    { title: "Mashle", author: "Hajime Komoto", studio: "A-1 Pictures", chars: ["Mash Burnedead", "Finn Ames", "Lance Crown", "Innocent Zero", "Dot Barrett", "Lemon Irvine", "Rayne Ames", "Orter Madl", "Cell War", "Margarette Macaron"] },
+    { title: "Undead Unluck", author: "Yoshifumi Tozuka", studio: "David Production", chars: ["Andy", "Fuuko Izumo", "Shen Xiang", "Juiz", "Billy Alfred", "Tatiana", "Nico Vorgeil", "Rip Tristan", "Victor", "Feng Kowloon"] },
+    { title: "Shangri-La Frontier", author: "Katarina", studio: "C2C", chars: ["Sunraku", "Psyger-0", "Arthur Pencilgon", "Wezaemon", "Oikatzo", "Emul", "Vysache", "Animalia", "Kyoju", "Setsuna"] },
+    { title: "Baki", author: "Keisuke Itagaki", studio: "TMS Entertainment", chars: ["Baki Hanma", "Doppo Orochi", "Kaoru Hanayama", "Yujiro Hanma", "Goki Shibukawa", "Jack Hanma", "Retsu Kaioh", "Kozue Matsumoto", "Pickle", "Biscuit Oliva"] },
+    { title: "Kengan Ashura", author: "Yabako Sandrovich", studio: "Larx Entertainment", chars: ["Ohma Tokita", "Kazuo Yamashita", "Kaede Akiyama", "Agito Kanoh", "Raian Kure", "Cosmo Imai", "Wakatsuki Takeshi", "Setsuna Kiryu", "Kuroki Gensai", "Lihito"] },
+    { title: "Record of Ragnarok", author: "Shinya Umemura", studio: "Graphinica", chars: ["Brunhilde", "Lü Bu", "Adam", "Poseidon", "Kojiro Sasaki", "Jack the Ripper", "Heracles", "Buddha", "Zeus", "Thor"] },
+    { title: "Sakamoto Days", author: "Yuto Suzuki", studio: "TMS Entertainment", chars: ["Taro Sakamoto", "Shin Asakura", "Lu Shaotang", "Slur", "Nagumo", "Heisuke Mashimo", "Aoi Sakamoto", "Hana Sakamoto", "Takamura", "Osaragi"] },
+    { title: "Kaiju No. 8", author: "Naoya Matsumoto", studio: "Production I.G", chars: ["Kafka Hibino", "Mina Ashiro", "Reno Ichikawa", "Kaiju No. 9", "Kikoru Shinomiya", "Soshiro Hoshina", "Gen Narumi", "Iharu Furuhashi", "Isao Shinomiya", "Haruichi Izumo"] },
+    { title: "Cyberpunk Edgerunners", author: "Rafal Jaki", studio: "Trigger", chars: ["David Martinez", "Lucy", "Rebecca", "Adam Smasher", "Maine", "Dorio", "Kiwi", "Pilar", "Faraday", "Falco"] },
+    { title: "Spy x Family", author: "Tatsuya Endo", studio: "WIT Studio / CloverWorks", chars: ["Loid Forger", "Anya Forger", "Yor Forger", "Donovan Desmond", "Bond Forger", "Yuri Briar", "Fiona Frost", "Franky Franklin", "Sylvia Sherwood", "Damian Desmond"] },
+    { title: "Jojo Stardust Crusaders", author: "Hirohiko Araki", studio: "David Production", chars: ["Jotaro Kujo", "Joseph Joestar", "Noriaki Kakyoin", "DIO", "Muhammad Avdol", "Jean Pierre Polnareff", "Iggy", "Hol Horse", "Vanilla Ice", "Enya the Hag"] },
+    { title: "Assassination Classroom", author: "Yusei Matsui", studio: "Lerche", chars: ["Nagisa Shiota", "Karma Akabane", "Kaede Kayano", "Koro-sensei", "Tadaomi Karasuma", "Irina Jelavic", "Itona Horibe", "Ryoma Terasaka", "Gakushu Asano", "Akira Takaoka"] },
+    { title: "Elfen Lied", author: "Lynn Okamoto", studio: "Arms", chars: ["Lucy", "Kouta", "Yuka", "Kurama", "Nana", "Mayu", "Bando", "Mariko", "Nozomi", "Chief Kakuzawa"] },
+    { title: "Claymore", author: "Norihiro Yagi", studio: "Madhouse", chars: ["Clare", "Raki", "Teresa", "Priscilla", "Miria", "Helen", "Deneve", "Galatea", "Irene", "Isley"] },
+    { title: "D.Gray-man", author: "Katsura Hoshino", studio: "TMS Entertainment", chars: ["Allen Walker", "Lenalee Lee", "Yu Kanda", "Millennium Earl", "Lavi", "Bookman", "Miranda Lotto", "Arystar Krory", "Road Kamelot", "Tyki Mikk"] }
+  ];
+
+  animeEntriesFamosos.forEach((anime, index) => {
+    animeDatabase.push({
+      title: anime.title,
+      author: anime.author,
+      studio: anime.studio,
+      chars: crearPersonajesAnime(anime.chars, index + 11)
+    });
+  });
 
   // INICIALIZADOR COMPLETO DEL REPOSITORIO Y SELECTORES VERSUS
   function initSystem() {
